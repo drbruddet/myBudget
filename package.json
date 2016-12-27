@@ -1,0 +1,14 @@
+{
+  "name": "mybudget",
+  "version": "1.0.0",
+  "description": "Budget Management",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "guillaume kolly",
+  "license": "ISC",
+  "dependencies": {
+    "webpack": "^1.14.0"
+  }
+}
