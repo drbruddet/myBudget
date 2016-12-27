@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {render} from 'react-dom';
 
-import OperationList from './components/operationList.jsx';
+import OperationContainer from './containers/OperationContainer.jsx';
 
-class App extends React.Component {
+class App extends Component {
+
   render () {
     return (
       <div>
         <h1>My Budget Application</h1>
-        <OperationList />
+        <OperationContainer />
       </div>
     );
   }

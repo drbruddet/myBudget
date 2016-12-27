@@ -1,14 +1,44 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 
-class OperationList extends React.Component {
+import Operation from './Operation.jsx';
+
+class OperationList extends Component {
+
+  constructor(props) {
+    super(props);
+  }
+
+  renderOperations() {
+    return this.props.operations.map((operation) => (
+      <Operation key={operation._id} operation={operation} />
+    ));
+  }
 
   render() {
     return (
       <div>
-        <h2>Operation list</h2>
+        <table>
+          <caption>Operation list</caption>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Amount</th>
+              <th>Period</th>
+              <th>Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.renderOperations()}
+          </tbody>
+        </table>
       </div>
     );
   }
 }
+
+OperationList.propTypes = {
+  operations: PropTypes.array.isRequired,
+};
+
 
 export default OperationList;
