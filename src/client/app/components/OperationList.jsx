@@ -1,11 +1,10 @@
 import React, { Component, PropTypes } from 'react';
-
 import Operation from './Operation.jsx';
 
 class OperationList extends Component {
 
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
   }
 
   renderOperations() {
@@ -39,6 +38,5 @@ class OperationList extends Component {
 OperationList.propTypes = {
   operations: PropTypes.array.isRequired,
 };
-
 
 export default OperationList;

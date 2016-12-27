@@ -89,7 +89,7 @@
 	          null,
 	          'My Budget Application'
 	        ),
-	        _react2.default.createElement(_OperationContainer2.default, null)
+	        _react2.default.createElement(_OperationContainer2.default, { url: '../../public/operations.json' })
 	      );
 	    }
 	  }]);
@@ -22093,8 +22093,13 @@
 	  _createClass(OperationContainer, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
+	      this.loadOperationsFromAjax();
+	    }
+	  }, {
+	    key: 'loadOperationsFromAjax',
+	    value: function loadOperationsFromAjax() {
 	      _jquery2.default.ajax({
-	        url: "../../public/operations.json",
+	        url: this.props.url,
 	        dataType: 'json',
 	        type: 'GET',
 	        error: function (xhr, status, err) {
@@ -22118,6 +22123,10 @@
 	
 	  return OperationContainer;
 	}(_react.Component);
+	
+	OperationContainer.propTypes = {
+	  url: _react.PropTypes.string.isRequired
+	};
 	
 	exports.default = OperationContainer;
 
@@ -32384,10 +32393,10 @@
 	var OperationList = function (_Component) {
 	  _inherits(OperationList, _Component);
 	
-	  function OperationList(props) {
+	  function OperationList() {
 	    _classCallCheck(this, OperationList);
 	
-	    return _possibleConstructorReturn(this, (OperationList.__proto__ || Object.getPrototypeOf(OperationList)).call(this, props));
+	    return _possibleConstructorReturn(this, (OperationList.__proto__ || Object.getPrototypeOf(OperationList)).call(this));
 	  }
 	
 	  _createClass(OperationList, [{

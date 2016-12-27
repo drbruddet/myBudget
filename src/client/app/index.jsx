@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {render} from 'react-dom';
-
 import OperationContainer from './containers/OperationContainer.jsx';
 
 class App extends Component {
@@ -9,7 +8,7 @@ class App extends Component {
     return (
       <div>
         <h1>My Budget Application</h1>
-        <OperationContainer />
+        <OperationContainer url="../../public/operations.json" />
       </div>
     );
   }

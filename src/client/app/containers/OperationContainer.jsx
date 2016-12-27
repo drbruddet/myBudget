@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import jQuery from 'jquery'
 import $ from 'jquery'
-
 import OperationList from '../components/OperationList.jsx';
 
 class OperationContainer extends Component {
@@ -12,8 +11,12 @@ class OperationContainer extends Component {
   }
 
   componentDidMount() {
+    this.loadOperationsFromAjax();
+  }
+
+  loadOperationsFromAjax() {
     $.ajax({
-      url: "../../public/operations.json",
+      url: this.props.url,
       dataType: 'json',
       type : 'GET',
       error: function(xhr, status, err) {
@@ -33,5 +36,9 @@ class OperationContainer extends Component {
     );
   }
 }
+
+OperationContainer.propTypes = {
+  url: PropTypes.string.isRequired,
+};
 
 export default OperationContainer;
