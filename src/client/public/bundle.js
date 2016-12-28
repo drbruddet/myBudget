@@ -22070,6 +22070,10 @@
 	
 	var _OperationList2 = _interopRequireDefault(_OperationList);
 	
+	var _OperationTotal = __webpack_require__(/*! ../components/OperationTotal.jsx */ 182);
+	
+	var _OperationTotal2 = _interopRequireDefault(_OperationTotal);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22111,12 +22115,24 @@
 	      });
 	    }
 	  }, {
+	    key: 'sortOperations',
+	    value: function sortOperations(type) {
+	      return this.state.operations.filter(function (operation) {
+	        if (operation.type === type) {
+	          return operation;
+	        }
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(_OperationList2.default, { operations: this.state.operations })
+	        _react2.default.createElement(_OperationList2.default, { operations: this.state.operations }),
+	        _react2.default.createElement(_OperationTotal2.default, {
+	          creditOperations: this.sortOperations("Credit"),
+	          debitOperations: this.sortOperations("Debit") })
 	      );
 	    }
 	  }]);
@@ -32522,7 +32538,7 @@
 	        _react2.default.createElement(
 	          'td',
 	          null,
-	          this.props.operation.period
+	          this.props.operation.frequency
 	        ),
 	        _react2.default.createElement(
 	          'td',
@@ -32541,6 +32557,128 @@
 	};
 	
 	exports.default = Operation;
+
+/***/ },
+/* 182 */
+/*!******************************************************!*\
+  !*** ./src/client/app/components/OperationTotal.jsx ***!
+  \******************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var OperationTotal = function (_Component) {
+	  _inherits(OperationTotal, _Component);
+	
+	  function OperationTotal() {
+	    _classCallCheck(this, OperationTotal);
+	
+	    return _possibleConstructorReturn(this, (OperationTotal.__proto__ || Object.getPrototypeOf(OperationTotal)).call(this));
+	  }
+	
+	  _createClass(OperationTotal, [{
+	    key: "roundDecimal",
+	    value: function roundDecimal(number) {
+	      return Math.round(number * 100) / 100;
+	    }
+	  }, {
+	    key: "calculTotalMonthly",
+	    value: function calculTotalMonthly(operations) {
+	      var totalAmount = 0;
+	      operations.forEach(function (operation) {
+	        switch (operation.frequency) {
+	          case "Day":
+	            totalAmount += operation.amount * 30.4375;
+	            break;
+	          case "Week":
+	            totalAmount += operation.amount * 4.34524;
+	            break;
+	          case "Month":
+	            totalAmount += operation.amount;
+	            break;
+	          case "Year":
+	            totalAmount += operation.amount / 12;
+	            break;
+	        }
+	      });
+	      return this.roundDecimal(totalAmount);
+	    }
+	  }, {
+	    key: "calculRemainingBudget",
+	    value: function calculRemainingBudget() {
+	      return this.calculTotalMonthly(this.props.creditOperations) - this.calculTotalMonthly(this.props.debitOperations);
+	    }
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "div",
+	        null,
+	        _react2.default.createElement(
+	          "p",
+	          null,
+	          "Total Credits (",
+	          this.props.creditOperations.length,
+	          ") :",
+	          _react2.default.createElement(
+	            "strong",
+	            null,
+	            " ",
+	            this.calculTotalMonthly(this.props.creditOperations),
+	            " \u20AC "
+	          ),
+	          _react2.default.createElement("br", null),
+	          "Total Debits (",
+	          this.props.debitOperations.length,
+	          ") :",
+	          _react2.default.createElement(
+	            "strong",
+	            null,
+	            " ",
+	            this.calculTotalMonthly(this.props.debitOperations),
+	            " \u20AC"
+	          ),
+	          _react2.default.createElement("br", null),
+	          "Total Remaining : ",
+	          _react2.default.createElement(
+	            "strong",
+	            null,
+	            " ",
+	            this.calculRemainingBudget(),
+	            " \u20AC"
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return OperationTotal;
+	}(_react.Component);
+	
+	OperationTotal.propTypes = {
+	  debitOperations: _react.PropTypes.array.isRequired,
+	  creditOperations: _react.PropTypes.array.isRequired
+	};
+	
+	exports.default = OperationTotal;
 
 /***/ }
 /******/ ]);

@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import jQuery from 'jquery'
 import $ from 'jquery'
 import OperationList from '../components/OperationList.jsx';
+import OperationTotal from '../components/OperationTotal.jsx';
 
 class OperationContainer extends Component {
 
@@ -28,10 +29,21 @@ class OperationContainer extends Component {
     });
   }
 
+  sortOperations(type) {
+    return this.state.operations.filter((operation) => {
+      if (operation.type === type) {
+        return operation;
+      }
+    });
+  }
+
   render() {
     return (
       <div>
-        <OperationList operations={this.state.operations}/>
+        <OperationList operations={this.state.operations} />
+        <OperationTotal
+          creditOperations={this.sortOperations("Credit")}
+          debitOperations={this.sortOperations("Debit")} />
       </div>
     );
   }

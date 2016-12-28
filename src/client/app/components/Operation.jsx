@@ -7,7 +7,7 @@ class Operation extends Component {
       <tr>
         <td>{this.props.operation.name}</td>
         <td>{this.props.operation.amount}</td>
-        <td>{this.props.operation.period}</td>
+        <td>{this.props.operation.frequency}</td>
         <td>{this.props.operation.type}</td>
       </tr>
     );
