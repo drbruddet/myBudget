@@ -1,0 +1,105 @@
+[
+  {
+    "_id": 1,
+    "name": "Abonnement Netflix",
+    "amount": 11.99,
+    "frequency": "Month",
+    "type": "Debit"
+  }, {
+    "_id": 2,
+    "name": "Divers Taxe",
+    "amount": 700.87,
+    "frequency": "Year",
+    "type": "Debit"
+  }, {
+    "_id": 3,
+    "name": "Salaire",
+    "amount": 1500,
+    "frequency": "Month",
+    "type": "Credit"
+  }, {
+    "_id": 4,
+    "name": "Taxe ++",
+    "amount": 450,
+    "frequency": "Year",
+    "type": "Debit"
+  }, {
+    "_id": 5,
+    "name": "Domaines 1and1",
+    "amount": 11.99,
+    "frequency": "Year",
+    "type": "Debit"
+  }, {
+    "_id": 6,
+    "name": "Eau",
+    "amount": 29,
+    "frequency": "Month",
+    "type": "Debit"
+  }, {
+    "_id": 7,
+    "name": "Virement charges diverses",
+    "amount": 66.38,
+    "frequency": "Month",
+    "type": "Debit"
+  }, {
+    "_id": 8,
+    "name": "Internet",
+    "amount": 37.99,
+    "frequency": "Month",
+    "type": "Debit"
+  }, {
+    "_id": 9,
+    "name": "Electricité",
+    "amount": 88,
+    "frequency": "Month",
+    "type": "Debit"
+  }, {
+    "_id": 10,
+    "name": "Abonnement Tel",
+    "amount": 28.49,
+    "frequency": "Month",
+    "type": "Debit"
+  }, {
+    "_id": 11,
+    "name": "Gestion des comptes internet fixes",
+    "amount": 5.76,
+    "frequency": "Month",
+    "type": "Debit"
+  }, {
+    "_id": 12,
+    "name": "Abonnement gugugu",
+    "amount": 29.90,
+    "frequency": "Month",
+    "type": "Debit"
+  }, {
+    "_id": 13,
+    "name": "Abonnement Spotify Music",
+    "amount": 9.99,
+    "frequency": "Month",
+    "type": "Debit"
+  }, {
+    "_id": 14,
+    "name": "Gestion Serveur",
+    "amount": 132,
+    "frequency": "Year",
+    "type": "Debit"
+  }, {
+    "_id": 15,
+    "name": "Hebergement client 1",
+    "amount": 90,
+    "frequency": "Year",
+    "type": "Credit"
+  }, {
+    "_id": 16,
+    "name": "Hebergement client 2",
+    "amount": 90,
+    "frequency": "Year",
+    "type": "Credit"
+  }, {
+    "_id": 17,
+    "name": "Hebergement client 3",
+    "amount": 90,
+    "frequency": "Year",
+    "type": "Credit"
+  }
+]
